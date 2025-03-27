@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - manage_calendar_events (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - manage_calendar_events (from `.symlinks/plugins/manage_calendar_events/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  manage_calendar_events:
+    :path: ".symlinks/plugins/manage_calendar_events/ios"
+
+SPEC CHECKSUMS:
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  manage_calendar_events: fe1541069431af035ced925ebd9def8b4b271254
+
+PODFILE CHECKSUM: 6998435987a000fdec9b2e1b5b1eef6d54bdba77
+
+COCOAPODS: 1.16.2

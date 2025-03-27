@@ -1,0 +1,21 @@
+name: calendar_alarm
+description: "An app to get alarms for the existing events in your calendars"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  intl: any
+  manage_calendar_events: ^2.0.3
+
+dev_dependencies:
+  flutter_lints: ^5.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
