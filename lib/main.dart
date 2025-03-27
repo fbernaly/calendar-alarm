@@ -1,14 +1,18 @@
+import 'package:alarm/alarm.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'screens/calendar_list.dart';
+import 'services/cache.dart';
 
-void main() => runApp(App());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-class App extends StatelessWidget {
-  const App({super.key});
+  await Alarm.init();
+  await Cache().init();
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(home: CalendarList());
-  }
+  runApp(
+    MaterialApp(home: CalendarList()),
+  );
 }

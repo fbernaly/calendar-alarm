@@ -1,6 +1,12 @@
+import 'dart:async';
+
+import 'package:alarm/alarm.dart';
+import 'package:alarm/utils/alarm_set.dart';
 import 'package:flutter/material.dart';
 import 'package:manage_calendar_events/manage_calendar_events.dart';
 
+import '../services/alarms.dart';
+import '../services/permissions.dart';
 import 'event_list.dart';
 
 class CalendarList extends StatefulWidget {
@@ -13,15 +19,21 @@ class CalendarList extends StatefulWidget {
 class _CalendarListState extends State<CalendarList> {
   late final AppLifecycleListener _listener;
 
+  late final StreamSubscription? _ringSubscription;
+
   @override
   void initState() {
     super.initState();
     _listener = AppLifecycleListener(onResume: _onResume);
+
+    _ringSubscription = Alarm.ringing.listen(_onAlarmsRinging);
+    Permissions().checkPermissions();
   }
 
   @override
   void dispose() {
     _listener.dispose();
+    _ringSubscription?.cancel();
     super.dispose();
   }
 
@@ -93,4 +105,28 @@ class _CalendarListState extends State<CalendarList> {
   }
 
   void _onResume() => setState(() {});
+
+  Future<void> _onAlarmsRinging(AlarmSet alarms) async {
+    if (alarms.alarms.isEmpty) return;
+    for (final alarm in alarms.alarms) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog.adaptive(
+            title: Text(alarm.notificationSettings.title),
+            content: Text(alarm.notificationSettings.body),
+            actions: <Widget>[
+              TextButton(
+                child: Text('Ok'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  AlarmsManager().stopAlarm(alarm);
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
 }

@@ -4,13 +4,19 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.6.2
+  sdk: ^3.0.0
+  flutter: 3.27.3
 
 dependencies:
+  alarm: ^5.1.0
   flutter:
     sdk: flutter
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
   intl: any
+  logging: ^1.3.0
   manage_calendar_events: ^2.0.3
+  permission_handler: ^11.4.0
 
 dev_dependencies:
   flutter_lints: ^5.0.0
@@ -19,3 +25,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/audio/

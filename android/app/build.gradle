@@ -6,8 +6,8 @@ plugins {
 }
 
 android {
-    namespace = "com.calendar.alarm.fby.calendar_alarm"
-    compileSdk = flutter.compileSdkVersion
+    namespace = "com.calendar.alarm.fby"
+    compileSdk = 34
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -28,6 +28,7 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        multiDexEnabled true
     }
 
     buildTypes {

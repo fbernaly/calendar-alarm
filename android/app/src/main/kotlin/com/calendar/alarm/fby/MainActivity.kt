@@ -1,4 +1,4 @@
-package com.calendar.alarm.fby.calendar_alarm
+package com.calendar.alarm.fby
 
 import io.flutter.embedding.android.FlutterActivity
 
